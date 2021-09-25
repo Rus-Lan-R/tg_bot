@@ -1,12 +1,9 @@
 const express = require("express");
-const session = require("express-session");
-
-const MongoStore = require("connect-mongo");
 const path = require("path");
 const hbs = require("hbs");
 
 require("dotenv").config();
-const { connect, dbConnectionURL } = require("./src/config/db");
+const { connect } = require("./src/config/db");
 const { botListiner } = require("./src/bot/bot");
 
 const indexRouter = require("./src/routes/index.routes");
@@ -15,17 +12,6 @@ const app = express();
 
 connect();
 botListiner();
-
-const sessionParser = session({
-  secret: process.env.SESSION_SECRET,
-  name: app.get("cookieName"),
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: dbConnectionURL }),
-  cookie: {
-    httpOnly: true,
-  },
-});
 
 app.set("view engine", "hbs");
 app.set("views", path.join(process.env.PWD, "src", "views"));
