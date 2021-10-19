@@ -40,7 +40,10 @@ const botListiner = async () => {
     }
 
     try {
-      await UserTG.findOneAndUpdate({ chatId }, { $inc: { count_requests: +1 } });
+      await UserTG.findOneAndUpdate(
+        { chatId },
+        { $inc: { count_requests: +1 } },
+      );
     } catch (error) {
       bot.sendMessage(chatId, `error - ${error.code}`);
     }
@@ -67,7 +70,10 @@ const botListiner = async () => {
         });
         break;
       case "/help":
-        bot.sendMessage(chatId, `${msg.from.username} - на этом мои полномочия все, тут уже ничем не помочь  :-)`);
+        bot.sendMessage(
+          chatId,
+          `${msg.from.username} - на этом мои полномочия все, тут уже ничем не помочь  :-)`,
+        );
 
         break;
       case "/cat": {
@@ -82,12 +88,29 @@ const botListiner = async () => {
       case "/wish":
         bot.sendMessage(chatId, "#туттипапажэлание");
 
-        bot.sendPhoto(chatId, pictures[Math.floor(Math.random() * (pictures.length - 1)) + 1]);
+        bot.sendPhoto(
+          chatId,
+          pictures[Math.floor(Math.random() * (pictures.length - 1)) + 1],
+        );
         break;
 
       case "/stephani": {
         bot.sendMessage(1040051527, ` - лови кота и пожелание - `);
-        bot.sendPhoto(1040051527, pictures[Math.floor(Math.random() * (pictures.length - 1)) + 1]);
+        bot.sendPhoto(
+          1040051527,
+          pictures[Math.floor(Math.random() * (pictures.length - 1)) + 1],
+        );
+        const request = await fetch("https://aws.random.cat/meow");
+        const response = await request.json();
+
+        bot.sendPhoto(1040051527, response.file);
+      }
+      case "/tat": {
+        bot.sendMessage(965155230, ` - лови кота и пожелание - `);
+        bot.sendPhoto(
+          1040051527,
+          pictures[Math.floor(Math.random() * (pictures.length - 1)) + 1],
+        );
         const request = await fetch("https://aws.random.cat/meow");
         const response = await request.json();
 
