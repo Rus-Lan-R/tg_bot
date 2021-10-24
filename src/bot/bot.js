@@ -124,14 +124,18 @@ const botListiner = async () => {
           });
         });
 
-        bot.sendMessage(chatId, "сейчас бы на кнопки всякие нажимать", {
-          reply_markup: {
-            keyboard: [
-              ["/wish", "/cat"],
-              ["/help", "какая-то х-та", "самоуничтожение"],
-            ],
+        bot.sendMessage(
+          chatId,
+          `${msg.from.username}  сейчас бы на кнопки всякие нажимать `,
+          {
+            reply_markup: {
+              keyboard: [
+                ["/wish", "/cat"],
+                ["/help", "какая-то х-та", "самоуничтожение"],
+              ],
+            },
           },
-        });
+        );
         break;
     }
 
