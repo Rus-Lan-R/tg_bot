@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema({
   botName: { type: String },
-  chatId: { type: String, required: true, unique: true },
+  chatId: { type: String, required: true },
   is_bot: { type: Boolean },
   is_Admin: { type: Boolean, default: false },
   first_name: { type: String },

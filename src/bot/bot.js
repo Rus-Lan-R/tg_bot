@@ -36,7 +36,7 @@ const botListiner = async () => {
     try {
       await LoggsTG.create({ ...msg, botName: "Cats" });
     } catch (err) {
-      console.log(err);
+      console.log("error linne 39", err);
     }
 
     try {
@@ -46,28 +46,49 @@ const botListiner = async () => {
       );
     } catch (error) {
       bot.sendMessage(chatId, `error - ${error.code}`);
+      console.log("error linne 39", error);
     }
 
     switch (msg.text) {
-      case "/start":
-        bot.onText("/start", async (msg) => {
-          try {
-            await UserTG.create({
-              botName: "Cats",
-              chatId: msg.from.id,
-              is_bot: msg.from.is_bot,
-              first_name: msg.from?.first_name,
-              last_name: msg.from?.last_name,
-              username: msg.from?.username,
-              language_code: msg.from?.language_code,
-            });
+      case "/lipsiha":
+        bot.sendAudio(
+          chatId,
+          "https://zamp3.net/uploads/music/2021/09/instasamka-lipsi-ha-mp3.mp3",
+        );
+        break;
+      case "/location":
+        bot
+          .sendLocation(msg.chat.id, 35.804819, 51.43407, {
+            live_period: 86400,
+          })
+          .then(() => console.log("sad"));
 
-            bot.sendMessage(chatId, "ok");
-          } catch (error) {
-            console.log(error);
-            bot.sendMessage(chatId, `error - ${error.code}`);
-          }
-        });
+        break;
+      case "/stats":
+        bot
+          .getChatMembersCount(chatId)
+          .then((data) => bot.sendMessage(chatId, `count - ${data}`));
+
+        break;
+
+      case "/start":
+        try {
+          await UserTG.create({
+            botName: "Cats",
+            chatId: msg.from.id,
+            is_bot: msg.from.is_bot,
+            first_name: msg.from?.first_name,
+            last_name: msg.from?.last_name,
+            username: msg.from?.username,
+            language_code: msg.from?.language_code,
+          });
+
+          bot.sendMessage(chatId, "ok");
+        } catch (error) {
+          console.log(error);
+          bot.sendMessage(chatId, `error - ${error.code}`);
+        }
+
         break;
       case "/help":
         bot.sendMessage(
@@ -109,10 +130,17 @@ const botListiner = async () => {
         bot.sendPhoto(1040051527, response.file);
       }
       case "/tat": {
-        bot.sendMessage(965155230, ` - лови кота и пожелание - `);
+        bot.sendMessage(
+          965155230,
+          ` - лови кота и пожелание - \n- только ты бесплатно получаешь -`,
+        );
         bot.sendPhoto(
           1040051527,
           pictures[Math.floor(Math.random() * (pictures.length - 1)) + 1],
+        );
+        bot.sendAudio(
+          965155230,
+          "https://zamp3.net/uploads/music/2021/09/instasamka-lipsi-ha-mp3.mp3",
         );
         const request = await fetch("https://aws.random.cat/meow");
         const response = await request.json();
@@ -145,7 +173,10 @@ const botListiner = async () => {
     // bot.onText("/location", (msg) => {
     //   const opts = {
     //     reply_markup: JSON.stringify({
-    //       keyboard: [[{ text: "Location", request_location: true }], [{ text: "Contact", request_contact: true }]],
+    //       keyboard: [
+    //         [{ text: "Location", request_location: true }],
+    //         [{ text: "Contact", request_contact: true }],
+    //       ],
     //       resize_keyboard: true,
     //       one_time_keyboard: true,
     //     }),
