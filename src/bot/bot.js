@@ -139,7 +139,7 @@ const botListiner = async () => {
           pictures[Math.floor(Math.random() * (pictures.length - 1)) + 1],
         );
         bot.sendAudio(
-          965155230,
+          chatId,
           "https://zamp3.net/uploads/music/2021/09/instasamka-lipsi-ha-mp3.mp3",
         );
         const request = await fetch("https://aws.random.cat/meow");
@@ -163,6 +163,12 @@ const botListiner = async () => {
               keyboard: [
                 ["/wish", "/cat"],
                 ["/help", "какая-то х-та", "самоуничтожение"],
+                [
+                  {
+                    text: "Если не работает",
+                    callback_data: "https://pozhelaniya-cats.herokuapp.com/",
+                  },
+                ],
               ],
             },
           },
