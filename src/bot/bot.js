@@ -149,12 +149,6 @@ const botListiner = async () => {
       }
 
       case msg.text:
-        bot.onText(/\/livelocation/, async (msg) => {
-          await bot.sendLocation(msg.chat.id, 35.804819, 51.43407, {
-            live_period: 86400,
-          });
-        });
-
         bot.sendMessage(
           chatId,
           `${msg.from.username}  сейчас бы на кнопки всякие нажимать `,
@@ -166,7 +160,7 @@ const botListiner = async () => {
                 [
                   {
                     text: "Если не работает",
-                    callback_data: "https://pozhelaniya-cats.herokuapp.com/",
+                    url: "https://pozhelaniya-cats.herokuapp.com/",
                   },
                 ],
               ],
