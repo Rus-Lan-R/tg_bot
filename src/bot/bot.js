@@ -95,7 +95,10 @@ const botListiner = async () => {
         break;
 
       case "/stephani": {
-        bot.sendMessage(1040051527, ` - лови кота и пожелание - `);
+        bot.sendMessage(
+          1040051527,
+          ` - лови кота и пожелание - \n  - только ты бесплатно получаешь -`,
+        );
         bot.sendPhoto(
           1040051527,
           pictures[Math.floor(Math.random() * (pictures.length - 1)) + 1],
