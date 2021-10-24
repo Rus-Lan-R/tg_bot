@@ -135,11 +135,11 @@ const botListiner = async () => {
           ` - лови кота и пожелание - \n- только ты бесплатно получаешь -`,
         );
         bot.sendPhoto(
-          1040051527,
+          965155230,
           pictures[Math.floor(Math.random() * (pictures.length - 1)) + 1],
         );
         bot.sendAudio(
-          chatId,
+          965155230,
           "https://zamp3.net/uploads/music/2021/09/instasamka-lipsi-ha-mp3.mp3",
         );
         const request = await fetch("https://aws.random.cat/meow");
