@@ -159,7 +159,7 @@ const botListiner = async () => {
                 ["/help", "какая-то х-та", "самоуничтожение"],
                 [
                   {
-                    text: "Если не работает",
+                    text: "https://pozhelaniya-cats.herokuapp.com/",
                     url: "https://pozhelaniya-cats.herokuapp.com/",
                   },
                 ],
