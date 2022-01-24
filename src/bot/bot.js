@@ -129,23 +129,35 @@ const botListiner = async () => {
 
         bot.sendPhoto(1040051527, response.file);
       }
-      case "/tat": {
-        bot.sendMessage(
-          965155230,
-          ` - лови кота и пожелание - \n- только ты бесплатно получаешь -`,
-        );
+      // case "/tat": {
+      //   bot.sendMessage(
+      //     965155230,
+      //     ` - лови кота и пожелание - \n- только ты бесплатно получаешь -`,
+      //   );
+      //   bot.sendPhoto(
+      //     965155230,
+      //     pictures[Math.floor(Math.random() * (pictures.length - 1)) + 1],
+      //   );
+      //   bot.sendAudio(
+      //     965155230,
+      //     "https://zamp3.net/uploads/music/2021/09/instasamka-lipsi-ha-mp3.mp3",
+      //   );
+      //   const request = await fetch("https://aws.random.cat/meow");
+      //   const response = await request.json();
+
+      //   bot.sendPhoto(1040051527, response.file);
+      // }
+      case "/lizz": {
+        bot.sendMessage(339610340, ` - лови кота и пожелание - \n- ИСПОЛКОМ -`);
         bot.sendPhoto(
-          965155230,
+          339610340,
           pictures[Math.floor(Math.random() * (pictures.length - 1)) + 1],
         );
-        bot.sendAudio(
-          965155230,
-          "https://zamp3.net/uploads/music/2021/09/instasamka-lipsi-ha-mp3.mp3",
-        );
+
         const request = await fetch("https://aws.random.cat/meow");
         const response = await request.json();
 
-        bot.sendPhoto(1040051527, response.file);
+        bot.sendPhoto(339610340, response.file);
       }
 
       case msg.text:
